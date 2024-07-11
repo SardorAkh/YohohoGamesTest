@@ -1,14 +1,13 @@
-using Client.Systems;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using Runtime.Services;
+using Runtime.Systems;
 using UnityEngine;
 
 namespace Client {
     sealed class EcsStartup : MonoBehaviour
     {
         [SerializeField] private SceneService _sceneService;
-        
         EcsWorld _world;        
         IEcsSystems _systems;
 

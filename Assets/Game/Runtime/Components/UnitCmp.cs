@@ -6,6 +6,7 @@ namespace Runtime.Components
     public struct UnitCmp
     {
         public UnitView View;
-        public Vector3 Velocity;
+        public Vector3 Direction;
+        public float Speed;
     }
 }

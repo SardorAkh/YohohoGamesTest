@@ -20,7 +20,6 @@ namespace Runtime.Tools
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            print("works");
             if (_mode == JoystickMode.Dynamic)
             {
                 _joystickBackground.position = eventData.position;

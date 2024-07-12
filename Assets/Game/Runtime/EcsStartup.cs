@@ -2,12 +2,14 @@ using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using Runtime.Services;
 using Runtime.Systems;
+using Runtime.Tools;
 using UnityEngine;
 
-namespace Client {
+namespace Runtime {
     sealed class EcsStartup : MonoBehaviour
     {
         [SerializeField] private SceneService _sceneService;
+        [SerializeField] private PlayerService _playerService;
         EcsWorld _world;        
         IEcsSystems _systems;
 
@@ -15,16 +17,18 @@ namespace Client {
             _world = new EcsWorld ();
             _systems = new EcsSystems (_world);
             _systems
+                .Add(new PlayerInitSystem())
                 .Add(new PlayerInputSystem())
-                .Add(new MovementSystem())
-                // register additional worlds here, for example:
-                // .AddWorld (new EcsWorld (), "events")
+                .Add(new PlayerMovementSystem())
+                .Add(new ItemCollectSystem())
+                .Add(new SupplyStationSystem())
+                .AddWorld (new EcsWorld (), EcsKeys.EventWorldName)
 #if UNITY_EDITOR
                 // add debug systems for custom worlds here, for example:
                 // .Add (new Leopotam.EcsLite.UnityEditor.EcsWorldDebugSystem ("events"))
                 .Add (new Leopotam.EcsLite.UnityEditor.EcsWorldDebugSystem ())
 #endif
-                .Inject(_sceneService)
+                .Inject(_sceneService, _playerService)
                 .Init ();
         }
 

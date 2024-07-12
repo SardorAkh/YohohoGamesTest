@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 5983697651446592077}
   - component: {fileID: 1379127766159358010}
   - component: {fileID: 8660336774183232891}
-  - component: {fileID: 7707677794107561681}
+  - component: {fileID: 6298040467070347367}
+  - component: {fileID: 4285142714089962980}
   m_Layer: 0
   m_Name: Zone
   m_TagString: Untagged
@@ -84,8 +85,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7707677794107561681
-MeshCollider:
+--- !u!65 &6298040467070347367
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -99,13 +100,24 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 0.09}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4285142714089962980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2301939656641499379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9cc45c40a51451e88cf96e9c0e546bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5183219136645389616
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,6 +130,7 @@ GameObject:
   - component: {fileID: 3885199496375821067}
   - component: {fileID: 2554285666195828609}
   - component: {fileID: 5871930359789969682}
+  - component: {fileID: 468698993142517308}
   m_Layer: 0
   m_Name: Counter
   m_TagString: Untagged
@@ -213,6 +226,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &468698993142517308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5183219136645389616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bedf0900272244b189038b2f219c28bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _childCollider: {fileID: 4285142714089962980}
+  <MaxCarryCapacity>k__BackingField: 4
+  <ItemHoldPosition>k__BackingField: {fileID: 0}
 --- !u!1 &7299152316810721267
 GameObject:
   m_ObjectHideFlags: 0

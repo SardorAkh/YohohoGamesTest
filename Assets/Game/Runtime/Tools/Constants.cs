@@ -1,6 +1,6 @@
 ﻿namespace Runtime.Tools
 {
-    public static class EcsKeys
+    public static class Constants
     {
         public const string EventWorldName = "events";
     }

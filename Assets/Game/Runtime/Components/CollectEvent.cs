@@ -1,10 +1,11 @@
-﻿using Runtime.Views;
+﻿using Leopotam.EcsLite;
+using Runtime.Views;
 
 namespace Runtime.Components
 {
     public struct CollectEvent
     {
-        public CharacterView CharacterView;
-        public ItemView ItemView;
+        public EcsPackedEntityWithWorld CharacterEntity;
+        public EcsPackedEntityWithWorld SupplyStationEntity;
     }
 }

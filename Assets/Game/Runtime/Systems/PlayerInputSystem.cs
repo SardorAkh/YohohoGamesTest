@@ -9,8 +9,8 @@ namespace Runtime.Systems
 {
     public class PlayerInputSystem : IEcsRunSystem
     {
-        private readonly EcsWorldInject _eventsWorld = EcsKeys.EventWorldName;
-        private readonly EcsPoolInject<InputEvent> _inputPool = EcsKeys.EventWorldName;
+        private readonly EcsWorldInject _eventsWorld = Constants.EventWorldName;
+        private readonly EcsPoolInject<InputEvent> _inputPool = Constants.EventWorldName;
         private readonly EcsCustomInject<SceneService> _sceneService;
 
         public void Run(IEcsSystems systems)

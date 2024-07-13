@@ -22,7 +22,7 @@ namespace Runtime {
                 .Add(new PlayerMovementSystem())
                 .Add(new ItemCollectSystem())
                 .Add(new SupplyStationSystem())
-                .AddWorld (new EcsWorld (), EcsKeys.EventWorldName)
+                .AddWorld (new EcsWorld (), Constants.EventWorldName)
 #if UNITY_EDITOR
                 // add debug systems for custom worlds here, for example:
                 // .Add (new Leopotam.EcsLite.UnityEditor.EcsWorldDebugSystem ("events"))

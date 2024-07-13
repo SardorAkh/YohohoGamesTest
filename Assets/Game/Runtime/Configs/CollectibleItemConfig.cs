@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Runtime.Views;
+using UnityEngine;
 
 namespace Runtime.Configs
 {
@@ -7,6 +8,6 @@ namespace Runtime.Configs
     public class CollectibleItemConfig : ScriptableObject
     {
         [field: SerializeField] public int Id { get; private set; }
-        [field: SerializeField] public GameObject Prefab { get; private set; }
+        [field: SerializeField] public ItemView Prefab { get; private set; }
     }
 }

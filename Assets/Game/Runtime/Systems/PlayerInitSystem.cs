@@ -2,8 +2,8 @@
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using Runtime.Components;
-using Runtime.Configs;
 using Runtime.Services;
+using Runtime.Views;
 
 namespace Runtime.Systems
 {
@@ -15,12 +15,14 @@ namespace Runtime.Systems
         public void Init(IEcsSystems systems)
         {
             var entity = _defaultWorld.Value.NewEntity();
-            _playerService.Value.Player = _defaultWorld.Value.PackEntityWithWorld(entity);
+            var packedEntity = _defaultWorld.Value.PackEntityWithWorld(entity);
+            _playerService.Value.Player = packedEntity;
             var playerView = _playerService.Value.PlayerView;
             
             ref var characterCmp = ref _defaultWorld.Value.GetPool<CharacterCmp>().Add(entity);
             characterCmp.CharacterView = playerView;
-            characterCmp.ItemsStack = new Stack<CollectibleItemConfig>(); 
+            characterCmp.CharacterView.Construct(packedEntity);
+            characterCmp.ItemsStack = new Stack<ItemView>(); 
             
         }
     }

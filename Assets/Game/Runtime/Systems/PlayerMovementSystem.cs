@@ -9,7 +9,7 @@ namespace Runtime.Systems
 {
     public class PlayerMovementSystem : IEcsRunSystem
     {
-        private readonly EcsFilterInject<Inc<InputEvent>> _inputFilter = EcsKeys.EventWorldName;
+        private readonly EcsFilterInject<Inc<InputEvent>> _inputFilter = Constants.EventWorldName;
         private readonly EcsCustomInject<PlayerService> _playerService;
         private readonly EcsWorldInject _defaultWorld = default;
 

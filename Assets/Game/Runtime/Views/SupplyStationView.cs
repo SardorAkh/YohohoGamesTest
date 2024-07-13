@@ -8,17 +8,19 @@ namespace Runtime.Views
 {
     public class SupplyStationView : MonoBehaviour
     {
-        [SerializeField] private ItemView _supplyItem;
+        [field: SerializeField] public ItemView SupplyItem { get; private set; }
         [SerializeField] private ChildCollider _childCollider;
         [field: SerializeField] public int MaxCarryCapacity { get; private set; }
         [field: SerializeField] public Transform ItemHoldPosition { get; private set; }
-        
+
+        private EcsPackedEntityWithWorld _entity;
         private EcsWorld _eventEcsWorld;
         private int _lastEventEntity;
-
-        public void Construct(EcsWorld eventEcsWorld)
+        
+        public void Construct(EcsWorld eventEcsWorld, EcsPackedEntityWithWorld entity)
         {
             _eventEcsWorld = eventEcsWorld;
+            _entity = entity;
         }
         
         private void OnEnable()
@@ -40,8 +42,8 @@ namespace Runtime.Views
             {
                 var entity = _eventEcsWorld.NewEntity();
                 ref var collectEvent = ref _eventEcsWorld.GetPool<CollectEvent>().Add(entity);
-                collectEvent.CharacterView = characterView;
-                collectEvent.ItemView = _supplyItem;
+                collectEvent.CharacterEntity = characterView.Entity;
+                collectEvent.SupplyStationEntity = _entity;
 
                 _lastEventEntity = entity;
             }

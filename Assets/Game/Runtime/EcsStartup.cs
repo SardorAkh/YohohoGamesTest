@@ -3,6 +3,7 @@ using Leopotam.EcsLite.Di;
 using Runtime.Services;
 using Runtime.Systems;
 using Runtime.Tools;
+using Runtime.Views;
 using UnityEngine;
 
 namespace Runtime {
@@ -23,6 +24,7 @@ namespace Runtime {
                 .Add(new ItemCollectSystem())
                 .Add(new SupplyStationSystem())
                 .Add(new SupplyDepotStationSystem())
+                .Add(new ItemStackDisplayerSystem())
                 .AddWorld (new EcsWorld (), Constants.EventWorldName)
 #if UNITY_EDITOR
                 // add debug systems for custom worlds here, for example:

@@ -3,8 +3,8 @@ using Runtime.Views;
 
 namespace Runtime.Components
 {
-    public struct CharacterCmp
+    public struct SupplyDepotStationCmp
     {
-        public CharacterView CharacterView;
+        public SupplyDepotStationView SupplyDepotStationView;
     }
 }

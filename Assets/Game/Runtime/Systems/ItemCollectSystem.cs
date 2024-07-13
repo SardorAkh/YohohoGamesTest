@@ -9,9 +9,7 @@ namespace Runtime.Systems
     public class ItemCollectSystem : IEcsRunSystem
     {
         private readonly EcsFilterInject<Inc<CollectEvent>> _collectEventFilter = Constants.EventWorldName;
-        private readonly EcsPoolInject<CharacterCmp> _characterPool;
-        private readonly EcsPoolInject<SupplyStationCmp> _supplyStationPool;
-        
+        private readonly EcsPoolInject<ItemStackCmp> _itemStackPool;
         
         public void Run(IEcsSystems systems)
         {
@@ -20,17 +18,18 @@ namespace Runtime.Systems
                 var pool = _collectEventFilter.Pools.Inc1;
                 var collectEvent = pool.Get(entity);
 
-                var player = _characterPool.Value.Get(collectEvent.CharacterEntity.Id);
-                var supplyStation = _supplyStationPool.Value.Get(collectEvent.SupplyStationEntity.Id);
-
-                if (supplyStation.ItemsStack.Count == 0) return;
+                var from = _itemStackPool.Value.Get(collectEvent.From.Id);
+                var to = _itemStackPool.Value.Get(collectEvent.To.Id);
                 
-                if (player.ItemsStack.Count < player.CharacterView.MaxCarryCapacity)
+
+                if (from.ItemsStack.Count == 0) return;
+                
+                if (to.ItemsStack.Count < to.MaxCapacity)
                 {
-                    var item = supplyStation.ItemsStack.Pop();
-                    player.ItemsStack.Push(item);
-                    item.transform.parent = player.CharacterView.ItemHoldPosition;
-                    item.transform.localPosition = new Vector3(0, player.ItemsStack.Count * 0.5f, 0);
+                    var item = from.ItemsStack.Pop();
+                    to.ItemsStack.Push(item);
+                    item.transform.parent = to.CarryingPointTransform;
+                    item.transform.localPosition = new Vector3(0, to.ItemsStack.Count * 0.5f, 0);
                 }                
             }
         }

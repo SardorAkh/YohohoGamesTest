@@ -9,5 +9,6 @@ namespace Runtime.Services
     {
         [field: SerializeField] public JoystickController JoystickController { get; private set; }
         [field: SerializeField] public List<SupplyStationView> SupplyStationViews { get; private set; }
+        [field: SerializeField] public List<SupplyDepotStationView> SupplyDepotStationViews { get; private set; }
     }
 }

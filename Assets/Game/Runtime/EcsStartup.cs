@@ -22,6 +22,7 @@ namespace Runtime {
                 .Add(new PlayerMovementSystem())
                 .Add(new ItemCollectSystem())
                 .Add(new SupplyStationSystem())
+                .Add(new SupplyDepotStationSystem())
                 .AddWorld (new EcsWorld (), Constants.EventWorldName)
 #if UNITY_EDITOR
                 // add debug systems for custom worlds here, for example:

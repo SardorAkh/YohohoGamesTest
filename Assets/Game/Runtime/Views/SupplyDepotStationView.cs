@@ -1,20 +1,19 @@
 ﻿using System;
 using Leopotam.EcsLite;
-using Runtime.Components;
 using Runtime.Tools;
 using UnityEngine;
 
 namespace Runtime.Views
 {
-    public class SupplyStationView : MonoBehaviour
+    public class SupplyDepotStationView : MonoBehaviour
     {
         [field: SerializeField] public ItemView SupplyItem { get; private set; }
         [field: SerializeField] public int MaxCarryCapacity { get; private set; }
-        [field: SerializeField] public Transform ItemHoldPosition { get; private set; }
+        [field: SerializeField] public Transform ItemPlacePosition { get; private set; }
 
-        public EcsPackedEntityWithWorld PackedEntity { get; private set; }
+        public EcsPackedEntityWithWorld PackedEntity;
         
-        public void Construct(EcsPackedEntityWithWorld entity)
+        public void Construct( EcsPackedEntityWithWorld entity)
         {
             PackedEntity = entity;
         }

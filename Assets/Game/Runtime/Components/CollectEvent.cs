@@ -5,7 +5,7 @@ namespace Runtime.Components
 {
     public struct CollectEvent
     {
-        public EcsPackedEntityWithWorld CharacterEntity;
-        public EcsPackedEntityWithWorld SupplyStationEntity;
+        public EcsPackedEntityWithWorld From;
+        public EcsPackedEntityWithWorld To;
     }
 }
